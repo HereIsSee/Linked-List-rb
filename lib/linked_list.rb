@@ -78,6 +78,15 @@ class LinkedList
     nil
   end
 
+  def to_s
+    string = ""
+    @pointer = @head
+    until @pointer.nil? do 
+      string += "( #{@pointer.data} ) -> "
+      @pointer = @pointer.next_node
+    end
+    string+= "nil"
+  end
 end
 
 
@@ -85,7 +94,7 @@ list = LinkedList.new
 [0,2,3,1,4,6,66].each {|value| list.append(value)}
 
 
-p list.find 2
+p list.to_s
 # list.read_data
 # puts
 # list.pop
