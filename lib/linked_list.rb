@@ -57,6 +57,15 @@ class LinkedList
     @size -= 1
     @pointer.next_node = nil
   end
+
+  def contains value
+    @pointer = @head
+    until @pointer.nil? do 
+      return true if @pointer.data == value
+      @pointer = @pointer.next_node
+    end
+    false
+  end
 end
 
 
@@ -64,7 +73,7 @@ list = LinkedList.new
 [0,2,3,1,4,6,66].each {|value| list.append(value)}
 
 
-p list.at(6).data
+p list.contains 61
 # list.read_data
 # puts
 # list.pop
