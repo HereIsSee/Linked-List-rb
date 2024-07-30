@@ -78,6 +78,22 @@ class LinkedList
     nil
   end
 
+  def insert_at value, index
+    if index == 0 
+      @head = Node.new(value,@head)
+      return
+    end
+    return puts "index out of bounds" if index >= @size
+    @pointer = @head
+    temp = nil
+    index.times do |indicator|
+      temp = @pointer if (index-1) == indicator 
+      @pointer = @pointer.next_node
+    end
+    temp.next_node = Node.new(value, @pointer)
+    return
+  end
+
   def to_s
     string = ""
     @pointer = @head
@@ -93,7 +109,7 @@ end
 list = LinkedList.new
 [0,2,3,1,4,6,66].each {|value| list.append(value)}
 
-
+list.insert_at(333, 77)
 p list.to_s
 # list.read_data
 # puts
