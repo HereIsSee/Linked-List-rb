@@ -15,7 +15,6 @@ class LinkedList
     @head = Node.new(value, @head)
   end
 
-
   def append value
     @size += 1
     if @head.nil?
@@ -49,10 +48,25 @@ class LinkedList
     @pointer
   end
 
+  def pop
+    @pointer = @head
+
+    (@size-2).times do 
+      @pointer = @pointer.next_node
+    end
+    @size -= 1
+    @pointer.next_node = nil
+  end
 end
 
 
 list = LinkedList.new
 [0,2,3,1,4,6,66].each {|value| list.append(value)}
 
-p list.at(5).data
+
+p list.at(6).data
+# list.read_data
+# puts
+# list.pop
+# puts
+# list.read_data
