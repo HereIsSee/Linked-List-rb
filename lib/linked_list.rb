@@ -58,7 +58,7 @@ class LinkedList
     @pointer.next_node = nil
   end
 
-  def contains value
+  def contains? value
     @pointer = @head
     until @pointer.nil? do 
       return true if @pointer.data == value
@@ -66,6 +66,18 @@ class LinkedList
     end
     false
   end
+
+  def find value
+    index = 0
+    @pointer = @head
+    until @pointer.nil? do 
+      return index if @pointer.data == value
+      @pointer = @pointer.next_node
+      index += 1
+    end
+    nil
+  end
+
 end
 
 
@@ -73,7 +85,7 @@ list = LinkedList.new
 [0,2,3,1,4,6,66].each {|value| list.append(value)}
 
 
-p list.contains 61
+p list.find 2
 # list.read_data
 # puts
 # list.pop
